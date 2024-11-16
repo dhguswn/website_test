@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼별 음악 재생</title>
+</head>
+<body>
+
+    <h1>음악 선택</h1>
+
+    <!-- 각 버튼 -->
+    <button id="song1">노래 1</button>
+    <button id="song2">노래 2</button>
+    <button id="song3">노래 3</button>
+
+    <!-- 재생 상태 표시 -->
+    <p id="timeDisplay">재생 상태: 0초 / 0초</p>
+
+    <!-- 오디오 요소 -->
+    <audio id="audioPlayer" preload="auto"></audio>
+
+    <script>
+        // 각 버튼과 오디오 요소 선택
+        const song1Button = document.getElementById('song1');
+        const song2Button = document.getElementById('song2');
+        const song3Button = document.getElementById('song3');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const timeDisplay = document.getElementById('timeDisplay');
+
+        // 버튼 클릭 시 해당 노래 재생
+        song1Button.addEventListener('click', () => {
+            playSong('song1.mp3');
+        });
+
+        song2Button.addEventListener('click', () => {
+            playSong('song2.mp3');
+        });
+
+        song3Button.addEventListener('click', () => {
+            playSong('song3.mp3');
+        });
+
+        // 노래 재생 함수
+        function playSong(songFile) {
+            audioPlayer.src = songFile;
+            audioPlayer.play();
+        }
+
+        // 재생 시간 업데이트
+        audioPlayer.addEventListener('timeupdate', () => {
+            const currentTime = Math.floor(audioPlayer.currentTime); // 현재 재생 시간 (초)
+            const duration = Math.floor(audioPlayer.duration); // 전체 재생 시간 (초)
+
+            if (!isNaN(duration)) { // duration이 유효할 때만 업데이트
+                timeDisplay.textContent = `재생 상태: ${currentTime}초 / ${duration}초`;
+            } else {
+                timeDisplay.textContent = `재생 상태: ${currentTime}초 / 로딩 중...`;
+            }
+        });
+    </script>
+
+</body>
+</html>
