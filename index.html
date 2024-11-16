@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>버튼별 음악 재생</title>
     <style>
+        /* 버튼 스타일 */
+        button {
+            font-size: 24px; /* 글자 크기 3배로 키움 */
+            padding: 20px 40px; /* 버튼 안쪽 여백 */
+            margin: 10px auto; /* 각 버튼 사이 간격을 10px로 설정하고, 가운데 정렬 */
+            cursor: pointer;
+            background-color: #4CAF50; /* 버튼 배경색 */
+            color: white; /* 글자색 */
+            border: none;
+            border-radius: 10px; /* 둥근 모서리 */
+            width: 400px; /* 버튼 폭을 400px로 설정 */
+            text-align: center; /* 텍스트 가운데 정렬 */
+            display: block; /* 버튼을 블록 요소로 만들어 중앙에 정렬되도록 설정 */
+        }
+
+        button:hover {
+            background-color: #45a049; /* 마우스를 올렸을 때 색 변화 */
+        }
+
         /* 게이지 바 스타일 */
         #progressContainer {
             width: 100%;
@@ -19,6 +38,17 @@
             height: 100%;
             background-color: #4caf50;
             border-radius: 5px;
+        }
+
+        /* 제목 스타일 */
+        h1 {
+            text-align: center;
+        }
+
+        /* 재생 상태 표시 */
+        #timeDisplay {
+            text-align: center;
+            font-size: 18px;
         }
     </style>
 </head>
